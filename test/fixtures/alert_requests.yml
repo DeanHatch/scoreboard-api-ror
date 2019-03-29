@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: EmailAlert
+  to_dest: MyString
+  at_domain: MyString
+  #team_id: 
+  team: fcone
+
+two:
+  type: EmailAlert
+  to_dest: MyString
+  at_domain: MyString
+  #team_id: 
+  team: fctwo

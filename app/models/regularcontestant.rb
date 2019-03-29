@@ -1,0 +1,3 @@
+class Regularcontestant < Contestant
+
+end
