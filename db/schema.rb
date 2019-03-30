@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190328233301) do
+ActiveRecord::Schema.define(version: 20190330010852) do
 
   create_table "alert_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "type"
@@ -170,8 +170,6 @@ ActiveRecord::Schema.define(version: 20190328233301) do
 
   create_table "valid_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "competition_id"
-    t.integer "grouping_id"
-    t.bigint "venue_id"
     t.integer "from_time"
     t.integer "to_time"
     t.datetime "created_at", null: false
