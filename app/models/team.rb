@@ -2,9 +2,9 @@ class Team < ApplicationRecord
   						
 	has_many :alert_requests
 
-	belongs_to :competition, foreign_key: "competition_id"
-	belongs_to :manager, foreign_key: "competition_id"
-	validates_presence_of :competition_id
+	#belongs_to :competition, foreign_key: "competition_id"
+	#belongs_to :manager, foreign_key: "competition_id"
+	#validates_presence_of :competition_id
 	
 	belongs_to :grouping, foreign_key: "grouping_id"
 	validates_presence_of :grouping_id # ignore when creating root Grouping for a Competition

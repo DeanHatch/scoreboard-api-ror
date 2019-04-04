@@ -36,7 +36,18 @@ class TeamsController < ApplicationController
 
   # DELETE /teams/1
   def destroy
-    @team.destroy
+    if @team.contestants.count>0
+      render json: 'Cannot Delete this Team. It is a Contestant in at least one Contest.',
+              status: :conflict # STATUS=409 if children present
+    else
+      begin
+        @team.destroy
+	render json: 'Gone'
+      rescue
+        render json: @team.errors, status: :unprocessable_entity
+      end
+    end
+    #@team.destroy
   end
 
   private

@@ -27,15 +27,26 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update team" do
     patch team_url(@team), params: {grouping_id: @team.grouping_id,
-	team: { competition_id: @team.competition_id, grouping_id: @team.grouping_id, name: @team.name }}
+	team: { grouping_id: @team.grouping_id, name: @team.name }}
     assert_response :success
   end
 
-  test "should destroy team" do
+  test "should destroy team if not contestant" do
+      # A newly created Team cannot be a Contestant yet
+    post grouping_teams_path(@grouping),
+        params: { team: { grouping_id: @grouping.id,
+                       	name: "Very Very Temporary"} }
+    @newteam = JSON.parse(response.body, object_class: Team)
     assert_difference('Team.count', -1) do
+      delete team_url(@newteam)
+    end
+    assert_response :success
+  end
+
+  test "should not destroy team which is a contestant" do
+    assert_difference('Team.count', 0) do
       delete team_url(@team)
     end
-
-    assert_response :success
+    assert_response :conflict
   end
 end
