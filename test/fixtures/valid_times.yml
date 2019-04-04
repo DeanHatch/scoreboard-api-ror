@@ -2,14 +2,10 @@
 
 one:
   competition: soccer
-  #grouping_id: 1
-  #venue_id: 1
-  from_time: 1
-  to_time: 1
+  from_time: 100
+  to_time: 180
 
 two:
-  competition: soccer
-  #grouping_id: 1
-  #venue_id: 1
-  from_time: 2
-  to_time: 2
+  competition: bball
+  from_time: 120
+  to_time: 210

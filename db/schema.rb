@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190330010852) do
+ActiveRecord::Schema.define(version: 20190404013321) do
 
   create_table "alert_requests", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "type"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20190330010852) do
   end
 
   create_table "bcadvancements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "from_contest_id"
+    t.bigint "from_contest_id"
     t.string "wl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 20190330010852) do
   end
 
   create_table "contestants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "competition_id"
+    t.bigint "competition_id"
     t.string "type"
     t.bigint "contest_id"
     t.string "contest_type"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(version: 20190330010852) do
     t.integer "score"
     t.boolean "forfeit"
     t.integer "seeding"
-    t.integer "bracketgrouping_id"
+    t.bigint "bracketgrouping_id"
     t.string "bcspec_type"
-    t.integer "bcspec_id"
+    t.bigint "bcspec_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contest_id"], name: "fk_rails_c669339d8d"
@@ -126,7 +126,7 @@ ActiveRecord::Schema.define(version: 20190330010852) do
   end
 
   create_table "groupingplaces", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "grouping_id"
+    t.bigint "grouping_id"
     t.integer "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -153,7 +153,6 @@ ActiveRecord::Schema.define(version: 20190330010852) do
   end
 
   create_table "teams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "competition_id"
     t.string "name"
     t.bigint "grouping_id"
     t.datetime "created_at", null: false
@@ -166,14 +165,16 @@ ActiveRecord::Schema.define(version: 20190330010852) do
     t.bigint "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["competition_id", "gamedate"], name: "index_valid_dates_on_competition_id_and_gamedate", unique: true
   end
 
   create_table "valid_times", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "competition_id"
+    t.bigint "competition_id"
     t.integer "from_time"
     t.integer "to_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["competition_id"], name: "index_valid_times_on_competition_id"
   end
 
   create_table "venues", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -196,5 +197,6 @@ ActiveRecord::Schema.define(version: 20190330010852) do
   add_foreign_key "groupings", "competitions"
   add_foreign_key "groupings", "groupings", column: "parent_id"
   add_foreign_key "teams", "groupings"
+  add_foreign_key "valid_times", "competitions"
   add_foreign_key "venues", "competitions"
 end

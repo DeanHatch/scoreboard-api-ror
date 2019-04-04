@@ -8,7 +8,7 @@ rcgameone:
   type: Regularcontest
   competition: bball
   venue: maingym
-  date: 2015-01-25
+  date: 2019-01-25
   time: 120
   status: SCHEDULED
 #
@@ -16,7 +16,7 @@ rcgametwo:
   type: Regularcontest
   competition: bball
   venue: auxgym
-  date: 2015-01-25
+  date: 2019-01-25
   time: 120
   status: SCHEDULED
 
@@ -27,7 +27,7 @@ bcgameone:
   bracketgrouping: bballdiv1
   venue: auxgym
   name: Game Uno
-  date: 2015-01-27
+  date: 2019-01-27
   time: 120
   status: SCHEDULED
   
@@ -38,7 +38,7 @@ bcgametwo:
   bracketgrouping: bballdiv1
   venue: auxgym
   name: Game Dos
-  date: 2015-01-27
+  date: 2019-01-27
   time: 120
   status: SCHEDULED
   
@@ -49,7 +49,7 @@ bcgamethree:
   bracketgrouping: bballdiv1
   venue: auxgym
   name: The Big Championship Game
-  date: 2015-01-28
+  date: 2019-01-28
   time: 120
   status: SCHEDULED
   

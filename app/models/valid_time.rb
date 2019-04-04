@@ -1,11 +1,13 @@
 class ValidTime < ApplicationRecord
-	
-  belongs_to :competition, foreign_key: "competition_id"
+  belongs_to :competition
   belongs_to :manager, foreign_key: "competition_id"
-  validates_presence_of :competition_id
-  belongs_to :grouping, foreign_key: "grouping_id"
-  belongs_to :venue, foreign_key: "venue_id"
-
+  
+  validates :from_time, inclusion: { in: 1..287,
+    message: "%{value} is not a valid start time value" }
+  
+  validates :to_time, inclusion: { in: 1..287,
+    message: "%{value} is not a valid end time value" }
+  
      # Return a ValidTime object that spans the entire day.
      # This can be used for selection lists if no specific start
      # times have been identified.
@@ -21,16 +23,6 @@ class ValidTime < ApplicationRecord
     (self.from_time..self.to_time).to_a.collect{|t| [GameTime.new(t).to_s, t.to_s]}
   end
       
-    # Convenience method with default if nil.
-  def grouping_name()
-    self.grouping_id ? Grouping.find(self.grouping_id).fullname : 'All'
-  end
-
-    # Convenience method with default if nil.
-  def venue_name()
-    self.venue_id ? Venue.find(self.venue_id).name : 'All'
-  end
-  
     # Use GameTime class to format beginning of time range.
   def display_from_time
     GameTime.new(self.from_time).to_s

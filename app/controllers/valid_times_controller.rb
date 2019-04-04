@@ -51,6 +51,6 @@ class ValidTimesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def valid_time_params
-      params.require(:valid_time).permit(:competition_id, :grouping_id, :venue_id, :from_time, :to_time)
+      params.require(:valid_time).permit(:competition_id, :from_time, :to_time)
     end
 end
