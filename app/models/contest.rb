@@ -98,17 +98,59 @@ class Contest < ApplicationRecord
 	  end
 	end
 	
+	#~ def <=>(other_contest)
+		#~ (return other_contest.date.nil? ? 0 : -1) if self.date.nil?
+		#~ return 1 if other_contest.date.nil?
+		#~ return -1 if other_contest.date > self.date
+		#~ return 1 if other_contest.date < self.date
+		   #~ # Past here, both dates not nil and are equal
+		#~ (return other_contest.time.nil? ? 0 : -1) if self.time.nil?
+		#~ return 1 if other_contest.time.nil?
+		#~ return -1 if other_contest.time > self.time
+		#~ return 1 if other_contest.time < self.time
+		#~ 0
+	#~ end
+	
+		
 	def <=>(other_contest)
-		(return other_contest.date.nil? ? 0 : -1) if self.date.nil?
-		return 1 if other_contest.date.nil?
-		return -1 if other_contest.date > self.date
-		return 1 if other_contest.date < self.date
-		   # Past here, both dates not nil and are equal
-		(return other_contest.time.nil? ? 0 : -1) if self.time.nil?
-		return 1 if other_contest.time.nil?
-		return -1 if other_contest.time > self.time
-		return 1 if other_contest.time < self.time
+	  case
+	      # When both dates are nil then return zero (EQUAL)
+	    when self.date.nil? && other_contest.date.nil?
+	      0
+	      # When only this date is nil then -1 (SELF is First)
+	    when self.date.nil?
+	      -1
+	      # When only the other date is nil then 1 (OTHER is First)
+	    when other_contest.date.nil?
+ 	      1
+	      # When this date is earlier then -1 (SELF is First)
+	    when other_contest.date > self.date
+	      -1
+	      # When other date is earlier then 1 (OTHER is First)
+	    when other_contest.date < self.date
+		1
+		   # Past here, both dates not nil and they are equal
+	      # When both times are nil then return zero (EQUAL)
+	    when self.time.nil? && other_contest.time.nil?
+	      0
+	      # When only this time is nil then -1 (SELF is First)
+	    when self.time.nil?
+	      -1
+	      # When only the other time is nil then 1 (OTHER is First)
+	    when other_contest.time.nil?
+ 	      1
+	      # When this time is earlier then -1 (SELF is First)
+	    when other_contest.time > self.time
+	      -1
+	      # When other time is earlier then 1 (OTHER is First)
+	    when other_contest.time < self.time
+		1
+	      # If all other possibilities have been exhausted
+	      # then both dates are not nil and are equal and
+	      # both times are not nil and are equal
+ 	    else
 		0
+	    end
 	end
 	
 		

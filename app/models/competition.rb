@@ -21,7 +21,8 @@ class Competition < ApplicationRecord
 	has_many :bracketgroupings, -> { where(bracket_grouping: true) }
 	has_many :teams, through: :groupings
 	
-	
+	has_many :contests
+	has_many :regularcontests
 		
 	 # Save associated top-level Grouping for this Competition
 	 # after saving this Competition. That way there will be at
