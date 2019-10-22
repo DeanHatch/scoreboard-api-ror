@@ -8,12 +8,13 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
+#gem 'rails', '~> 6.0.0', '>= 6.0.0'
 # Use mysql as the database for Active Record
-#gem 'mysql2', '>= 0.3.18', '< 0.6.0'
 # downgraded MySQL Gem 3/2/2019
+# UPgraded MySQL Gem 9/19/2019
+# DOWNgraded MySQL Gem 9/19/2019
 gem 'mysql2', '0.3.21'
 # Use Puma as the app server
-gem 'puma', '~> 3.7'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -23,6 +24,8 @@ gem 'puma', '~> 3.7'
 
 # Added Devise Gem 3/4/2019
 gem 'devise'
+# Added responders 9/26/2019
+gem 'responders', '2.4.1'
 # Added OmniAuth Gem 3/5/2019
 gem 'omniauth', '>= 1.0.0'
 
@@ -30,15 +33,13 @@ gem 'omniauth', '>= 1.0.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+ gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
-group :development do
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem "tzinfo-data", "~> 1.2019"

@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 	  resources :venues
 	  resources :valid_dates
 	  resources :valid_times
+  
+  resources :bcadvancements
+  resources :groupingplaces
+  
 	end  # end of competitions resources
       end  # of organizations resources
       
@@ -33,10 +37,6 @@ Rails.application.routes.draw do
        #        to: 'teams#index_for_competition', 
        #	  as: :teams_for_competition
        
-  
-  resources :bcadvancements
-  resources :groupingplaces
-  
   devise_for :customers, controllers: {sessions: 'customers/sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :customers do
