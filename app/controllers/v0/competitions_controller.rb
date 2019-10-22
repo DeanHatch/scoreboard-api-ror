@@ -1,4 +1,4 @@
-class CompetitionsController < ApplicationController
+class V0::CompetitionsController < V0::ApplicationController
   before_action :set_organization, only: [:index, :create]
   before_action :set_competition, only: [:show, :update, :destroy]
 

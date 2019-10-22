@@ -1,4 +1,4 @@
-class GroupingplacesController < ApplicationController
+class V0::GroupingplacesController < V0::ApplicationController
   before_action :set_groupingplace, only: [:show, :update, :destroy]
 
   # GET /groupingplaces

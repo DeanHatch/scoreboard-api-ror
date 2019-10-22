@@ -1,4 +1,4 @@
-class CreditsController < ApplicationController
+class V0::CreditsController < V0::ApplicationController
   before_action :set_credit, only: [:show, :update, :destroy]
 
   # GET /credits

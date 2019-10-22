@@ -1,4 +1,4 @@
-class RegularcontestsController < ApplicationController
+class V0::RegularcontestsController < V0::ApplicationController
   before_action :set_competition, only: [:index, :create]
   before_action :set_regularcontest, only: [:show, :update, :destroy]
 

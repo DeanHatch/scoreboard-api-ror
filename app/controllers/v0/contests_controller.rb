@@ -1,4 +1,4 @@
-class ContestsController < ApplicationController
+class V0::ContestsController < ApplicationController
   before_action :set_contest, only: [:show, :update, :destroy]
 
   # GET /contests

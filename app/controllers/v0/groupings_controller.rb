@@ -1,4 +1,4 @@
-class GroupingsController < ApplicationController
+class V0::GroupingsController < V0::ApplicationController
   before_action :set_competition, only: [:index, :create]
   before_action :set_grouping, only: [:show, :update, :destroy]
 

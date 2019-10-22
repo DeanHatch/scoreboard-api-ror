@@ -1,4 +1,4 @@
-class TeamsController < ApplicationController
+class V0::TeamsController < V0::ApplicationController
   before_action :set_grouping, only: [:index, :create]
   before_action :set_team, only: [:show, :update, :destroy]
 

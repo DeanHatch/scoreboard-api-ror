@@ -1,4 +1,4 @@
-class BcadvancementsController < ApplicationController
+class V0::BcadvancementsController < V0::ApplicationController
   before_action :set_bcadvancement, only: [:show, :update, :destroy]
 
   # GET /bcadvancements

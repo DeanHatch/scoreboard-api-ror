@@ -1,4 +1,4 @@
-class OrganizationsController < ApplicationController
+class V0::OrganizationsController < V0::ApplicationController
   before_action :set_organization, only: [:show, :update, :destroy]
 
   # GET /organizations

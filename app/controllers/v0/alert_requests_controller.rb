@@ -1,4 +1,4 @@
-class AlertRequestsController < ApplicationController
+class V0::AlertRequestsController < V0::ApplicationController
   before_action :set_alert_request, only: [:show, :update, :destroy]
 
   # GET /alert_requests

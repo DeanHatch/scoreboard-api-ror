@@ -1,4 +1,4 @@
-class ValidTimesController < ApplicationController
+class V0::ValidTimesController < V0::ApplicationController
   before_action :set_competition, only: [:index, :create]
   before_action :set_valid_time, only: [:show, :update, :destroy]
 

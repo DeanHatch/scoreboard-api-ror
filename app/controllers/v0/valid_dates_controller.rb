@@ -1,4 +1,4 @@
-class ValidDatesController < ApplicationController
+class V0::ValidDatesController < V0::ApplicationController
   before_action :set_competition, only: [:index, :create]
   before_action :set_valid_date, only: [:show, :update, :destroy]
 
