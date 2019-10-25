@@ -19,7 +19,7 @@ class V0::GroupingsController < V0::ApplicationController
     @grouping = Grouping.new(grouping_params)
 
     if @grouping.save
-      render json: @grouping, status: :created, location: @grouping
+      render json: @grouping, status: :created, location: v0_grouping_url(@grouping)
     else
       render json: @grouping.errors, status: :unprocessable_entity
     end
