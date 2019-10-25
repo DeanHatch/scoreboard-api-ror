@@ -18,7 +18,7 @@ class V0::OrganizationsController < V0::ApplicationController
     @organization = Organization.new(organization_params)
 
     if @organization.save
-      render json: @organization, status: :created, location: @organization
+      render json: @organization, status: :created, location: v0_organization_url(@organization)
     else
       render json: @organization.errors, status: :unprocessable_entity
     end
@@ -35,7 +35,12 @@ class V0::OrganizationsController < V0::ApplicationController
 
   # DELETE /organizations/1
   def destroy
-    @organization.destroy
+    begin
+      @organization.destroy
+    rescue
+         # 409 if Foreign Key violation
+       render json: @organization.errors, status: :conflict
+    end
   end
 
   private

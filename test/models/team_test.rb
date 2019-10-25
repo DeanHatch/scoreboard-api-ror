@@ -12,12 +12,12 @@ class TeamTest < ActiveSupport::TestCase
 	   assert ! newteam.valid?
 	   newteam.name = "Dynomite" # no Grouping or Competition
 	   assert ! newteam.valid?
-	   newteam.competition = competitions(:bball) # still no Grouping
-	   assert ! newteam.valid?
+	   #newteam.competition = competitions(:bball) # still no Grouping
+	   #assert ! newteam.valid?
 	   newteam.grouping = groupings(:bballcon22) # should now be valid
 	   assert  newteam.valid?
-	   newteam.competition = nil # now no Competition
-	   assert ! newteam.valid?
+	   #newteam.competition = nil # now no Competition
+	   #assert ! newteam.valid?
    end
 
 	#
