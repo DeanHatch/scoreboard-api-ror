@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TeamsControllerTest < ActionDispatch::IntegrationTest
+class V0::TeamsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @team = teams(:heat)
     @grouping = groupings(:bballcon11)
@@ -8,44 +8,44 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get grouping_teams_url(@grouping), as: :json
+    get v0_grouping_teams_url(@grouping), as: :json
     assert_response :success
   end
 
   test "should create team" do
     assert_difference('Team.unscoped.count') do
-      post grouping_teams_url(@grouping), params: {team: { competition_id: @team.competition_id, grouping_id: @team.grouping_id, name: @team.name }}
+      post v0_grouping_teams_url(@grouping), params: {team: { competition_id: @team.competition_id, grouping_id: @team.grouping_id, name: @team.name }}
     end
 
     assert_response :success
   end
 
   test "should show team" do
-    get team_url(@team)
+    get v0_team_url(@team)
     assert_response :success
   end
 
   test "should update team" do
-    patch team_url(@team), params: {grouping_id: @team.grouping_id,
+    patch v0_team_url(@team), params: {grouping_id: @team.grouping_id,
 	team: { grouping_id: @team.grouping_id, name: @team.name }}
     assert_response :success
   end
 
   test "should destroy team if not contestant" do
       # A newly created Team cannot be a Contestant yet
-    post grouping_teams_path(@grouping),
+    post v0_grouping_teams_path(@grouping),
         params: { team: { grouping_id: @grouping.id,
                        	name: "Very Very Temporary"} }
     @newteam = JSON.parse(response.body, object_class: Team)
     assert_difference('Team.count', -1) do
-      delete team_url(@newteam)
+      delete v0_team_url(@newteam)
     end
     assert_response :success
   end
 
   test "should not destroy team which is a contestant" do
     assert_difference('Team.count', 0) do
-      delete team_url(@team)
+      delete v0_team_url(@team)
     end
     assert_response :conflict
   end

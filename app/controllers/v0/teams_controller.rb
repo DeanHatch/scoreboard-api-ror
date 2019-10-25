@@ -19,7 +19,7 @@ class V0::TeamsController < V0::ApplicationController
     @team = Team.new(team_params)
 
     if @team.save
-      render json: @team, status: :created, location: @team
+      render json: @team, status: :created, location: v0_team_url(@team)
     else
       render json: @team.errors, status: :unprocessable_entity
     end
