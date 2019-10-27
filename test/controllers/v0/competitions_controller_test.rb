@@ -11,23 +11,23 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get organization_competitions_url(@organization), as: :json
+    get v0_organization_competitions_url(@organization), as: :json
     assert_response :success
   end
 
   test "should get index across organizations" do
-    get competitions_across_organizations_url, as: :json
+    get v0_competitions_across_organizations_url, as: :json
     assert_response :success
   end
 
   test "should show competition" do
-    get competition_url(@competition.id), as: :json
+    get v0_competition_url(@competition.id), as: :json
     assert_response :success
   end
 
   test "should create competition" do
     assert_difference('Competition.count') do
-      post organization_competitions_url(@organization), params: {competition: { organization_id: @competition.organization_id,
+      post v0_organization_competitions_url(@organization), params: {competition: { organization_id: @competition.organization_id,
 						                            drawpoints: @competition.drawpoints,
 						                            forfeitlossscore: @competition.forfeitlossscore,
 									    forfeitpoints: @competition.forfeitpoints, 	
@@ -48,7 +48,7 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "patch should update competition" do
-    patch competition_url(@competition), params: {competition: { drawpoints: @competition.drawpoints,
+    patch v0_competition_url(@competition), params: {competition: { drawpoints: @competition.drawpoints,
                                                                            forfeitlossscore: @competition.forfeitlossscore, 
 									   forfeitpoints: @competition.forfeitpoints, 
 									   forfeitwinscore: @competition.forfeitwinscore, 
@@ -66,7 +66,7 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "put should update competition" do
-    put competition_url(@competition), params: {competition: { drawpoints: @competition.drawpoints,
+    put v0_competition_url(@competition), params: {competition: { drawpoints: @competition.drawpoints,
                                                                            forfeitlossscore: @competition.forfeitlossscore, 
 									   forfeitpoints: @competition.forfeitpoints, 
 									   forfeitwinscore: @competition.forfeitwinscore, 
@@ -85,7 +85,7 @@ class CompetitionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not destroy competition" do
     assert_difference('Competition.count', 0) do
-      delete competition_url(@competition)
+      delete v0_competition_url(@competition)
     end
 
     assert_response :method_not_allowed

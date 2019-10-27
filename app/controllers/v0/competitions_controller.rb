@@ -26,7 +26,7 @@ class V0::CompetitionsController < V0::ApplicationController
     @competition = Competition.new(competition_params)
 
     if @competition.save
-      render json: @competition, status: :created, location: @competition
+      render json: @competition, status: :created, location: v0_competition_url(@competition)
     else
       render json: @competition.errors, status: :unprocessable_entity
     end

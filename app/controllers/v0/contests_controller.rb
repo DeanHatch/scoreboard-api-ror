@@ -1,4 +1,4 @@
-class V0::ContestsController < ApplicationController
+class V0::ContestsController < V0::ApplicationController
   before_action :set_contest, only: [:show, :update, :destroy]
 
   # GET /contests
@@ -18,7 +18,7 @@ class V0::ContestsController < ApplicationController
     @contest = Contest.new(contest_params)
 
     if @contest.save
-      render json: @contest, status: :created, location: @contest
+      render json: @contest, status: :created, location: v0_contest_url(@contest)
     else
       render json: @contest.errors, status: :unprocessable_entity
     end

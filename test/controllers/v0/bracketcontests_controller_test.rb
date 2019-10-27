@@ -1,14 +1,18 @@
 require 'test_helper'
 
-class BracketcontestsControllerTest < ActionController::TestCase
+class BracketcontestsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    session[:manager_id] = competitions(:bball).id()
+      # Remember that there are no Bracketcontest fixtures
+      # so we get our Regularcontests from the Contests fixtures.
+      # This is a testing consequence of Single Table Inheritance.
+    @competition = competitions(:bball)
+    #session[:manager_id] = competitions(:bball).id()
     @bracketgrouping = Bracketgrouping.find(groupings(:bballdiv1).id()) # cannot use groupings fixtures
     @bracketcontest = contests(:bcgameone)
   end
 
-  test "should get new" do
-    get :new, bracketgrouping_id: @bracketgrouping.id
+  test "should get index" do
+    get v0_competition_bracketcontests_path(@competition)
     assert_response :success
   end
 
@@ -26,21 +30,55 @@ class BracketcontestsControllerTest < ActionController::TestCase
   end
 
   test "should show bracketcontest" do
-    get :show, id: @bracketcontest.id, bracketgrouping_id: @bracketgrouping.id
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @bracketcontest, bracketgrouping_id: @bracketgrouping.id
+    get v0_bracketcontest_url(@bracketcontest)
     assert_response :success
   end
 
   test "should update bracketcontest" do
-    patch :update, id: @bracketcontest, bracketgrouping_id: @bracketgrouping.id,
+    patch v0_bracketcontest_url(@bracketcontest),
+            params: { bracketgrouping_id: @bracketgrouping.id,
         bracketcontest: { status: "SCHEDULED" }, 
 	homecontestant: {contestantcode: @bracketgrouping.all_participant_codes().first() }, 
-	awaycontestant: {contestantcode: @bracketgrouping.all_participant_codes().first() }
+	awaycontestant: {contestantcode: @bracketgrouping.all_participant_codes().first() } }
     assert_redirected_to bracketgrouping_bracketcontest_path # (assigns(:bracketcontest))
   end
 
 end
+  test "should create regularcontest" do
+    assert_difference('Regularcontest.count') do
+      post v0_competition_regularcontests_url(@competition),
+            params: { regularcontest: { awaycontestant_id: @regularcontest.awaycontestant_id,
+                                        #competition_id: @regularcontest.competition_id,
+                                        competition_id: @regularcontest.competition_id,
+                                        date: @regularcontest.date,
+                                        homecontestant_id: @regularcontest.homecontestant_id,
+                                        name: @regularcontest.name,
+                                        status: "SCHEDULED",
+                                        time: @regularcontest.time,
+                                        venue_id: @regularcontest.venue_id } }, as: :json
+    end
+    assert_response :created # more specific than :success
+  end
+
+  test "should update regularcontest" do
+    patch v0_regularcontest_url(@regularcontest),
+		params: { regularcontest: {  status: "SCHEDULED" ,
+                               homecontestant: {team: @regularcontest.homecontestant.team }, 
+                               awaycontestant: {team: @regularcontest.awaycontestant.team } } }
+    assert_response :success
+  end
+
+  test "should update regularcontest by swapping home and away teams" do
+    patch v0_regularcontest_url(@regularcontest),
+		params: { regularcontest: {  status: "SCHEDULED" ,
+                               homecontestant: {team: @regularcontest.awaycontestant.team }, 
+                               awaycontestant: {team: @regularcontest.homecontestant.team } } }
+    assert_response :success
+  end
+
+  test "should destroy regularcontest" do
+    assert_difference('Regularcontest.count', -1) do
+      delete v0_regularcontest_url(@regularcontest)
+    end
+    assert :success
+  end

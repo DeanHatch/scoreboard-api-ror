@@ -19,7 +19,7 @@ class V0::RegularcontestsController < V0::ApplicationController
     @regularcontest = Regularcontest.new(regularcontest_params)
 
     if @regularcontest.save
-      render json: @regularcontest, status: :created, location: @regularcontest
+      render json: @regularcontest, status: :created, location: v0_regularcontest_url(@regularcontest)
     else
       render json: @regularcontest.errors, status: :unprocessable_entity
     end
