@@ -19,7 +19,7 @@ class V0::ValidTimesController < V0::ApplicationController
     @valid_time = ValidTime.new(valid_time_params)
 
     if @valid_time.save
-      render json: @valid_time, status: :created, location: @valid_time
+      render json: @valid_time, status: :created, location: v0_valid_time_url(@valid_time)
     else
       render json: @valid_time.errors, status: :unprocessable_entity
     end

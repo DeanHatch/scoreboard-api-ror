@@ -1,4 +1,4 @@
-class BracketcontestsController < BracketgroupingsController
+class V0::BracketcontestsController < V0::BracketgroupingsController
 
   before_action :set_bracketcontest, only: [:show, :edit, :update, :destroy]
   before_action :set_bracketgrouping # before ALL actions

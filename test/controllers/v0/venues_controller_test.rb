@@ -8,45 +8,45 @@ class VenuesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get competition_venues_url(@competition)
+    get v0_competition_venues_url(@competition)
     assert_response :success
   end
 
   test "should create venue" do
       # Use unscoped count to get ALL Venues, not just those for one Competition
     assert_difference('Venue.unscoped.count') do
-      post competition_venues_url(@competition),params: {venue: { competition_id: @venue.competition_id, name: @venue.name }}
+      post v0_competition_venues_url(@competition),params: {venue: { competition_id: @venue.competition_id, name: @venue.name }}
     end
 
     assert_response :success
   end
 
   test "should show venue" do
-    get venue_url(@venue)
+    get v0_venue_url(@venue)
     assert_response :success
   end
 
   test "should update venue" do
-    patch venue_url(@venue), params: { venue: { competition_id: @venue.competition_id, name: @venue.name }}
+    patch v0_venue_url(@venue), params: { venue: { competition_id: @venue.competition_id, name: @venue.name }}
     assert_response :success
   end
 
   test "should not destroy venue due to child(ren)" do
     assert_difference('Venue.count', 0) do
-      delete venue_url(@venue)
+      delete v0_venue_url(@venue)
     end
     assert_response :conflict
   end
 
   test "should destroy newly created venue since it has no children" do
       # First create
-      post competition_venues_url(@competition),
+      post v0_competition_venues_url(@competition),
               params: {venue: { competition_id: @venue.competition_id,
 	      name: 'New '+@venue.name }}
       @newvenue = JSON.parse(response.body, object_class: Venue)
       # Then destroy
       assert_difference('Venue.count', -1) do
-	delete venue_url(@newvenue)
+	delete v0_venue_url(@newvenue)
       end
       assert_response :success
     end

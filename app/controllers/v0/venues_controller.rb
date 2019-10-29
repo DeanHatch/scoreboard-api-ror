@@ -19,7 +19,7 @@ class V0::VenuesController < V0::ApplicationController
     @venue = Venue.new(venue_params)
 
     if @venue.save
-      render json: @venue, status: :created, location: @venue
+      render json: @venue, status: :created, location: v0_venue_url(@venue)
     else
       render json: @venue.errors, status: :unprocessable_entity
     end

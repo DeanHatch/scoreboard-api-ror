@@ -19,7 +19,7 @@ class V0::ValidDatesController < V0::ApplicationController
     @valid_date = ValidDate.new(valid_date_params)
 
     if @valid_date.save
-      render json: @valid_date, status: :created, location: @valid_date
+      render json: @valid_date, status: :created, location: v0_valid_date_url(@valid_date)
     else
       render json: @valid_date.errors, status: :unprocessable_entity
     end
