@@ -28,12 +28,8 @@ Things you may want to cover:
 
 <hr/>
 
-<a href="https://codeclimate.com/github/DeanHatch/scoreboard-api/maintainability"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability" /></a>
-<a href="https://codeclimate.com/github/DeanHatch/scoreboard-api/test_coverage"><img src="https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage" /></a>
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
-
-= Online-Scoreboard.net Functional Specification
+Online-Scoreboard.net Functional Specification
 ------
 == Overview
 
