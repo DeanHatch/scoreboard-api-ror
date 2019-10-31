@@ -37,12 +37,11 @@ Rails.application.routes.draw do
        #        to: 'teams#index_for_competition', 
        #	  as: :teams_for_competition
        
-  devise_for :customers, controllers: {sessions: 'customers/sessions' }
+  devise_for :customers, controllers: {sessions: 'customers/sessions' }, defaults: { format: :json }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :customers do
     resources :credits
     end
   
-  #root to: "home#index"
   root to: "application#index"
 end
