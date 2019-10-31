@@ -2,9 +2,16 @@ require 'test_helper'
 
 class CompetitionTest < ActiveSupport::TestCase
   
-  # test "the truth" do
-  #   assert true
-  # end
+  test "has_secure_token" do
+    assert true
+    comp =  competitions(:bball).dup
+    #puts Competition.methods.sort.join('   ')
+    #puts comp.methods.sort.join('   ')
+    puts comp.hashed_scorer_password
+    comp.regenerate_hashed_scorer_password
+    puts comp.hashed_scorer_password
+  end
+
   test "fixture competitions loaded correctly" do
 	  #assert Competition.all.size == 3, "Should have been three loaded. #{Competition.all.size} were"
   end

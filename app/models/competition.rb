@@ -1,5 +1,8 @@
 class Competition < ApplicationRecord
-  	
+
+        #has_secure_token :password_reset_token
+        has_secure_token :hashed_scorer_password
+
 	belongs_to :organization
 	
 	enum sport: [ :basketball, :soccer, :quidditch ]
