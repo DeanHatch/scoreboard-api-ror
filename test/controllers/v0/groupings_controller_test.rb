@@ -31,7 +31,7 @@ class GroupingsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update grouping" do
     patch v0_grouping_url(@grouping), params: {grouping: { competition: @competition,
-	name: @grouping.name, parent_id: @grouping.parent_id } }
+	name: "New " + @grouping.name, parent_id: @grouping.parent_id } }
     assert_response :success
   end
 

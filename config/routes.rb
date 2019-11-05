@@ -8,10 +8,12 @@ Rails.application.routes.draw do
 	      resources :alert_requests, shallow: true 
 	    end # of teams resources
 	  end  # end of groupings resources
-	  resources :contests
+	  #resources :contests
 	  resources :regularcontests
 	  resources :bracketcontests
-	  resources :contestants, only: [:index, :show]
+          # Contestants of al types will be handled through
+          # their respective Contests Controllers
+	  #resources :contestants, only: [:index, :show]
 	  resources :venues
 	  resources :valid_dates
 	  resources :valid_times
