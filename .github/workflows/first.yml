@@ -22,6 +22,6 @@ jobs:
     - name: Build and test with Rake
       run: |
         gem install bundler
-        bundle install --jobs 4 --retry 3
+        bundle install --jobs 3 --retry 2
         bundle exec rake
         bundle exec rake test test/models/*.rb
