@@ -29,6 +29,7 @@ class RegularcontestsControllerTest < ActionDispatch::IntegrationTest
                                         venue_id: @regularcontest.venue_id } }, as: :json
     end
     assert_response :created # more specific than :success
+    puts response.body
   end
 
   test "should update regularcontest" do

@@ -9,11 +9,6 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6', '>= 5.1.6.1'
 #gem 'rails', '~> 6.0.0', '>= 6.0.0'
-# Use mysql as the database for Active Record
-# downgraded MySQL Gem 3/2/2019
-# UPgraded MySQL Gem 9/19/2019
-# DOWNgraded MySQL Gem 9/19/2019
-gem 'mysql2', '0.3.21'
 # Use Puma as the app server
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -33,7 +28,19 @@ gem 'omniauth', '>= 1.0.0'
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
- gem 'rack-cors'
+gem 'rack-cors'
+
+group :development, :production do
+  # Use mysql as the database for Active Record
+  # downgraded MySQL Gem 3/2/2019
+  # UPgraded MySQL Gem 9/19/2019
+  # DOWNgraded MySQL Gem 9/19/2019
+  gem 'mysql2', '0.3.21'
+end
+group :test do
+  # Use sqlite3 as the database for Active Record
+  #gem 'sqlite3'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

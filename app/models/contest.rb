@@ -34,7 +34,7 @@ class Contest < ApplicationRecord
 	# Create a collection of contest statuses.
 	# This will be used to display selection choices and for validation.
 	def Contest.statuses
-		['SCHEDULED','POSTPONED','COMPLETED','FORFEIT','CANCELLED','FINAL']
+          ['SCHEDULED','POSTPONED','COMPLETED','FORFEIT','CANCELLED','FINAL'].freeze
 	end
 	
 	
