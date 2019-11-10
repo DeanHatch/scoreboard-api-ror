@@ -47,7 +47,7 @@ class BracketcontestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy bracketcontest" do
-    assert_difference('Regularcontest.count', -1) do
+    assert_difference('Bracketcontest.count', -1) do
       delete v0_bracketcontest_url(@bracketcontest)
     end
     assert :success

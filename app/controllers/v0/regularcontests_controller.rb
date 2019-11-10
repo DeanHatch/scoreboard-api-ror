@@ -1,6 +1,6 @@
 class V0::RegularcontestsController < V0::ApplicationController
   before_action :set_competition, only: [:index, :create]
-  before_action :set_regularcontest, only: [:show, :update, :destroy]
+  before_action :set_regularcontest, only: [:show, :update, :destroy, :record]
 
   # GET /regularcontests
   def index
@@ -39,6 +39,11 @@ class V0::RegularcontestsController < V0::ApplicationController
     @regularcontest.destroy
   end
 
+  # RECORD /regularcontests/1
+  def record
+    @regularcontest.record_result(score_params)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_competition
@@ -53,4 +58,10 @@ class V0::RegularcontestsController < V0::ApplicationController
     def regularcontest_params
       params.require(:regularcontest).permit(:competition_id, :type, :date, :time, :venue_id, :status, :homecontestant_id, :awaycontestant_id, :bracketgrouping_id, :name)
     end
+
+    # Only allow a trusted parameter "white list" through.
+    def score_params
+      params.require(:regularcontest).permit(:homescore, :awayscore)
+    end
+
 end

@@ -9,8 +9,13 @@ Rails.application.routes.draw do
 	    end # of teams resources
 	  end  # end of groupings resources
 	  #resources :contests
-	  resources :regularcontests
-	  resources :bracketcontests
+	  #resources :regularcontests
+	  #resources :bracketcontests
+	  #resources :regularcontests, :bracketcontests do
+          #  patch 'record', action: :record, as: :record
+          #end
+	  resources :regularcontests, :bracketcontests
+	  resources :regularscorers, :bracketscorers, only: [:update]
           # Contestants of al types will be handled through
           # their respective Contests Controllers
 	  #resources :contestants, only: [:index, :show]
@@ -41,7 +46,10 @@ Rails.application.routes.draw do
        
   devise_for :customers, controllers: {sessions: 'customers/sessions' }, defaults: { format: :json }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :customers do
+  #resources :customers do
+  #  resources :credits
+  #  end
+  namespace :customers do
     resources :credits
     end
   
